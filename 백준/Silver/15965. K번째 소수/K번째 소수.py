@@ -1,18 +1,10 @@
-N = int(input())
-cnt = 0
-result = 0
-for i in range(2, 10000000):
-    if cnt == N:
-        break
-    else:
-        j = 2
-        pan = True
-        while j * j <= i:
-            if i % j == 0:
-                pan = False
-                break
-            j += 1 
-        if pan: 
-            cnt += 1
-            result = i    
-print(result)
+import sys
+N = int(sys.stdin.readline())
+M = 7400000
+array = [0]*(M+1)
+for i in range(2, int(M**0.5)+1):
+    if array[i] == 0:
+        for j in range(i*i,M+1,i):
+            array[j] = 1
+x = [i for i in range(2,M+1) if array[i] == 0]
+print(x[N-1])
